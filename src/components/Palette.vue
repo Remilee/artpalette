@@ -10,9 +10,9 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, ref} from "vue";
+import {defineComponent, ref, PropType} from "vue";
 import PaletteColor from "components/PaletteColor.vue";
-import {IColorInfo, IPaletteInfo} from "src/models";
+import {IPaletteInfo} from "src/models";
 
 export default defineComponent({
   name: "Palette",
@@ -21,8 +21,8 @@ export default defineComponent({
     paletteInfo: Object as PropType<IPaletteInfo>
   },
   setup(props) {
-    const paletteNameProp = ref(props.paletteInfo.title)
-    const paletteValuesProp = ref(props.paletteInfo.values)
+    const paletteNameProp = ref(props.paletteInfo?.title)
+    const paletteValuesProp = ref(props.paletteInfo?.values)
     return {paletteNameProp, paletteValuesProp }}
 })
 </script>

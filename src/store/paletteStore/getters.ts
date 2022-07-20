@@ -5,4 +5,10 @@ export default class PaletteGetters extends Getters<PaletteState> {
   getFetchedPalettes() {
     return this.state.palettes
   }
+  getInfoVisibility() {
+    return this.state.infoVisibility
+  }
+  getDetailColorInfo() {
+    return this.state.detailColorInfo
+  }
 }

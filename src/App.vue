@@ -8,7 +8,7 @@ import {usePalette} from "src/store/paletteStore";
 export default defineComponent({
   name: "App",
   setup() {
-    const {actions, getters} = usePalette()
+    const {actions} = usePalette()
     onMounted( () => {
       void actions.fetchData()
     })

@@ -1,13 +1,15 @@
 export interface IPaletteState {
-  palettes: {}
+  palettes: IPalette,
+  infoVisibility: boolean,
+  detailColorInfo: IColorInfo
 }
 export interface IFetchedPalette {
   palettes: IPalette
 }
 export interface IPalette {
-  markers: IPaletteInfo[],
-  watercolor: IPaletteInfo[],
-  colorPencils: IPaletteInfo[],
+  markers: IPaletteInfo,
+  watercolor: IPaletteInfo,
+  colorPencils: IPaletteInfo,
 }
 export interface IPaletteInfo {
   title: string,

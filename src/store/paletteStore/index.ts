@@ -1,8 +1,4 @@
 import {Module, createComposable} from "vuex-smart-module";
-import state from "./state";
-import actions from "./actions";
-import getters from "./getters";
-import mutations from "./mutations";
 import PaletteGetters from "./getters";
 import PaletteState from "./state";
 import PaletteActions from "./actions";
