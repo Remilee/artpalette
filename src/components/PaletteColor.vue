@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, ref} from "vue";
+import {defineComponent, ref, PropType, computed} from "vue";
 import {IColorInfo} from "src/models";
 
 export default defineComponent ({
@@ -19,7 +19,12 @@ export default defineComponent ({
   },
   setup(props) {
     const color = ref(props.paletteInfoProp)
-    const imgSource = "colors/" + color.value.imgSrc
+    const imgSource = computed( () => {
+      if (props.paletteInfoProp) {
+        return `colors/${props.paletteInfoProp.imgSrc}`;
+      }
+      else {return null}
+    })
     return { color, imgSource }
   }
 })

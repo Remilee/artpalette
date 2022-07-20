@@ -19,9 +19,9 @@ export default defineComponent({
   components: {Palette},
   setup() {
     const {getters} = usePalette()
-    const markerPalette = computed(() => getters.getFetchedPalettes().markers)
-    const waterColorPalette = computed(() => getters.getFetchedPalettes().watercolor)
-    const coloredPencilsPalette = computed(() => getters.getFetchedPalettes().colorPencils)
+    const markerPalette = computed(() => getters.getFetchedPalettes()?.markers)
+    const waterColorPalette = computed(() => getters.getFetchedPalettes()?.watercolor)
+    const coloredPencilsPalette = computed(() => getters.getFetchedPalettes()?.colorPencils)
     return {markerPalette, waterColorPalette, coloredPencilsPalette}
   },
 });
