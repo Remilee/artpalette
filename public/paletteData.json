@@ -7,19 +7,25 @@
           "id": 0,
           "name": "Bright-yellow",
           "code": "Y14",
-          "imgSrc": "y14_bright_yellow.png"
+          "imgSrc": "y14_bright_yellow.png",
+          "amount": "100",
+          "refill": "true"
         },
         {
           "id": 1,
           "name": "Mid-yellow",
           "code": "Y33",
-          "imgSrc": "y62_mid_yellow.png"
+          "imgSrc": "y62_mid_yellow.png",
+          "amount": "25",
+          "refill": "false"
         },
         {
           "id": 2,
           "name": "Lemon",
           "code": "Y133",
-          "imgSrc": "y133_lemon.png"
+          "imgSrc": "y133_lemon.png",
+          "amount": "78",
+          "refill": "true"
         }
       ]
     },

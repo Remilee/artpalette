@@ -19,5 +19,8 @@ export interface IColorInfo {
   id: number,
   name: string,
   code: string,
-  imgSrc: string
+  imgSrc: string,
+  amount: number,
+  refill: boolean
+
 }

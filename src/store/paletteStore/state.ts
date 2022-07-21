@@ -7,4 +7,4 @@ export default class PaletteState implements IPaletteState {
     colorPencils: {title: "", values: []},
   };
   infoVisibility = false;
-  detailColorInfo: IColorInfo = { id: 0, name: "", code: "", imgSrc: ""}}
+  detailColorInfo: IColorInfo = { id: 0, name: "", code: "", imgSrc: "", amount: 100, refill: true}}

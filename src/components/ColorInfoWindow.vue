@@ -1,36 +1,81 @@
 <template>
   <div class="q-pa-md q-gutter-sm">
     <q-dialog :model-value="alert" persistent seamless position="bottom">
-      <q-card style="width: 100%; height: 50vh; border-radius: 30px 30px 0 0;" >
-        <span class="text-h3">olalalala</span>
-
-<!--        <q-linear-progress :value="0.6" color="pink"/>-->
-<!--        <q-card-section class="row items-center no-wrap">-->
-<!--          <div>-->
-<!--            <div class="text-weight-bold">The Walker</div>-->
-<!--            <div class="text-grey">Fitz & The Tantrums</div>-->
-<!--          </div>-->
-<!--          <q-space/>-->
-<!--          <q-btn flat round icon="play_arrow"/>-->
-<!--          <q-btn flat round icon="pause"/>-->
-<!--          <q-btn flat round icon="close" v-close-popup/>-->
-<!--        </q-card-section>-->
+      <q-card class="q-pa-md" style="width: 100%; height: 50vh; border-radius: 30px 30px 0 0;">
+        <div class="card__header flex justify-between q-mb-md">
+          <div></div>
+          <q-btn flat icon-right="close" @click="closeDialog"/>
+        </div>
+        <div class="detail__title flex justify-between">
+          <span class="detail__name text-h4"> {{ color.name }}</span>
+          <q-img class="detail__img" style="height: 36px; max-width: 96px" :src="`colors/${color.imgSrc}`"/>
+        </div>
+        <q-separator class="q-mt-md"/>
+        <div class="detail__content">
+          <div class="detail__amount flex items-baseline" style="color: black !important;">
+            <span class="text-subtitle1 q-mr-md">Количество</span>
+            <q-linear-progress
+              stripe rounded
+              :value="color.amount"
+              :color="calculatedColor"
+              class="q-mt-sm"
+              size="xl"
+              style="width: 24px"
+            />
+          </div>
+          <q-checkbox v-model="isRefill" left-label label="Заправка" disable class="text-subtitle1"/>
+        </div>
       </q-card>
     </q-dialog>
   </div>
 </template>
 
 <script lang="ts">
-import {defineComponent} from "vue";
+import {computed, defineComponent, PropType} from "vue";
+import {IColorInfo} from "src/models";
+import {usePalette} from "src/store/paletteStore";
 
-export default defineComponent ({
+export default defineComponent({
   name: "ColorInfoWindow",
   props: {
-    alert: Boolean,
+    color: Object as PropType<IColorInfo>
   },
+  setup(props) {
+    const {mutations, getters} = usePalette()
+    const alert = computed(() => {
+      return getters.getInfoVisibility()
+    })
+
+    function closeDialog() {
+      mutations.showInfoWindowVisibility(false)
+    }
+
+    const calculatedColor = computed(() => {
+      if (props.color) {
+        if (props.color.amount >= 80) {
+          return "green"
+        } else if (props.color.amount >= 33 && props.color.amount < 80) {
+          return "yellow"
+        } else if (props.color.amount < 33 && props.color.amount > 10) {
+          return "orange"
+        } else if (props.color.amount <= 10) {
+          return "red"
+        } else {
+          return "grey"
+        }
+      } else return "grey"
+    })
+
+    const isRefill = computed( () => {
+      if (props.color) {
+        return Boolean(props.color.refill)
+      }
+      else {
+        return false
+      }
+    })
+
+    return {closeDialog, alert, calculatedColor, isRefill}
+  }
 })
 </script>
-
-<style scoped>
-
-</style>

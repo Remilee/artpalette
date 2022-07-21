@@ -6,7 +6,7 @@
       <Palette :paletteInfo="waterColorPalette" v-if="waterColorPalette.values.length > 0"/>
       <Palette :paletteInfo="coloredPencilsPalette" v-if="coloredPencilsPalette.values.length > 0"/>
     </div>
-    <ColorInfoWindow :alert="isShowWindow" :color="colorInfo" @close="closeDialog" />
+    <ColorInfoWindow :color="colorInfo"/>
   </q-page>
 </template>
 
@@ -25,15 +25,11 @@ export default defineComponent({
     const waterColorPalette = computed(() => getters.getFetchedPalettes().watercolor)
     const coloredPencilsPalette = computed(() => getters.getFetchedPalettes().colorPencils)
 
-    const isShowWindow = computed( () => {
-      return getters.getInfoVisibility()
-    })
-
     const colorInfo = computed( () => {
       return getters.getDetailColorInfo()
     })
-
-    return {markerPalette, waterColorPalette, coloredPencilsPalette, isShowWindow, colorInfo}
+    return {markerPalette, waterColorPalette, coloredPencilsPalette
+      , colorInfo}
   },
 });
 </script>
