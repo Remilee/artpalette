@@ -1,10 +1,10 @@
 <template>
   <q-page class="column">
-    <h4 class="text-h4">Палитры</h4>
+    <h4 class="page-title text-h4">Палитры</h4>
     <div class="palette-list">
-      <Palette :paletteInfo="markerPalette" v-if="markerPalette.values.length > 0"/>
-      <Palette :paletteInfo="waterColorPalette" v-if="waterColorPalette.values.length > 0"/>
-      <Palette :paletteInfo="coloredPencilsPalette" v-if="coloredPencilsPalette.values.length > 0"/>
+      <Palette class="palette-item" :paletteInfo="markerPalette" v-if="markerPalette.values.length > 0"/>
+      <Palette class="palette-item" :paletteInfo="waterColorPalette" v-if="waterColorPalette.values.length > 0"/>
+      <Palette class="palette-item" :paletteInfo="coloredPencilsPalette" v-if="coloredPencilsPalette.values.length > 0"/>
     </div>
     <ColorInfoWindow :color="colorInfo"/>
   </q-page>

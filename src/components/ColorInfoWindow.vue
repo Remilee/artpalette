@@ -9,19 +9,21 @@
         <div class="detail__title flex justify-between">
           <span class="detail__name text-h4"> {{ color.name }}</span>
           <q-img class="detail__img" style="height: 36px; max-width: 96px" :src="`colors/${color.imgSrc}`"/>
+
         </div>
         <q-separator class="q-mt-md"/>
         <div class="detail__content">
-          <div class="detail__amount flex items-baseline" style="color: black !important;">
+          <div class="detail__amount flex items-center q-mb-md" style="color: black !important;">
             <span class="text-subtitle1 q-mr-md">Количество</span>
             <q-linear-progress
               stripe rounded
               :value="color.amount"
               :color="calculatedColor"
-              class="q-mt-sm"
+              class="q-mr-xs"
               size="xl"
-              style="width: 24px"
+              style="width: 24px;"
             />
+            <span class="text-caption">{{ colorLabel }}</span>
           </div>
           <q-checkbox v-model="isRefill" left-label label="Заправка" disable class="text-subtitle1"/>
         </div>
@@ -66,16 +68,31 @@ export default defineComponent({
       } else return "grey"
     })
 
-    const isRefill = computed( () => {
+    const colorLabel = computed(() => {
+      if (props.color) {
+        if (props.color.amount >= 80) {
+          return "Много"
+        } else if (props.color.amount >= 33 && props.color.amount < 80) {
+          return "Достаточно"
+        } else if (props.color.amount < 33 && props.color.amount > 10) {
+          return "Мало"
+        } else if (props.color.amount <= 10) {
+          return "Почти закончилось"
+        } else {
+          return "Нет данных"
+        }
+      } else return "Нет данных"
+    })
+
+    const isRefill = computed(() => {
       if (props.color) {
         return Boolean(props.color.refill)
-      }
-      else {
+      } else {
         return false
       }
     })
 
-    return {closeDialog, alert, calculatedColor, isRefill}
+    return {closeDialog, alert, calculatedColor, isRefill, colorLabel}
   }
 })
 </script>

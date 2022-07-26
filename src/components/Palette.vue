@@ -1,6 +1,6 @@
 <template>
   <div class="palette-container">
-    <span class="text-subtitle1">{{ paletteNameProp }}</span>
+    <span class="palette__name text-subtitle1 montserrat-font">{{ paletteNameProp }}</span>
     <div class="palette-grid">
       <span v-for="paletteColor in paletteValuesProp" :key="paletteColor.id">
         <PaletteColor class="palette-item" :paletteInfoProp="paletteColor"/>

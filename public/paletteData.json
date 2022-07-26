@@ -26,10 +26,27 @@
           "imgSrc": "y133_lemon.png",
           "amount": "78",
           "refill": "true"
+        },
+        {
+          "id": 3,
+          "name": "Yellow",
+          "code": "Y143",
+          "imgSrc": "y133_lemon.png",
+          "amount": "55",
+          "refill": "false"
         }
       ]
     },
-    "watercolor": { "title":  "Акварель", "values":  []},
+    "watercolor": { "title":  "Акварель", "values":  [
+      {
+        "id": 0,
+        "name": "Bright-yellow",
+        "code": "Y14",
+        "imgSrc": "y14_bright_yellow.png",
+        "amount": "100",
+        "refill": "true"
+      }
+    ]},
     "colorPencils": { "title":  "Цветные карандаши", "values":  []}
   }
 }
